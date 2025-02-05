@@ -22,7 +22,7 @@ class OAuthConsumer implements AuthServiceInterface
      */
     protected $mwOAuthUrl = 'https://nccommons.org/w/index.php?title=Special:OAuth';
 
-    protected $callbackUrl; // = 'https://nccroptool.toolforge.org/api/auth/callback';
+    protected $callbackUrl; // = 'https://croptoolmd.toolforge.org/api/auth/callback';
 
     /**
      * The interwiki prefix for the OAuth central wiki.
@@ -32,6 +32,7 @@ class OAuthConsumer implements AuthServiceInterface
     private $gUserAgent;
     private $gConsumerKey = '';
     private $gConsumerSecret = '';
+    private $mainsite = '';
     private $gTokenKey = '';
     private $gTokenSecret = '';
     private $signatureMethod = 'HMAC-SHA1'; // TODO: 'RSA-SHA1'
@@ -70,10 +71,12 @@ class OAuthConsumer implements AuthServiceInterface
         $this->gUserAgent = $config->get('userAgent');
         $this->gConsumerKey = $config->get('consumerKey');
         $this->gConsumerSecret = $config->get('consumerSecret');
+        $this->mainsite = $config->get('mainsite');
         $this->logger = $logger;
         $this->session = $session;
         $this->cookieKey = $this->loadEncryptionKeyFromConfig($keyFile);
         $this->callbackUrl = $callbackUrl;
+        $this->mwOAuthUrl = "https://" . $this->mainsite . "/w/index.php?title=Special:OAuth";
 
         // Load the user token (request or access) from the session
         $this->gTokenKey = '';

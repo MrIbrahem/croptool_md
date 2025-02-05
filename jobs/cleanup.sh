@@ -1,2 +1,2 @@
 #!/bin/sh
-wget -O /dev/null https://croptool.toolforge.org/api/server-cleanup
+wget -O /dev/null https://croptoolmd.toolforge.org/api/server-cleanup
