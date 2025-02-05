@@ -448,8 +448,8 @@ controller('AppCtrl', ['$scope', '$http', '$timeout', '$q', '$window', '$httpPar
 
     function parseImageUrlOrTitle( params ) {
 
-        var pattern1 = /([a-z0-9.\-]+)\.(wikimedia.org|wikipedia.org|wmflabs.org|wikisource.org)\/wiki\/([^?]+)/,
-            pattern2 = /([a-z0-9.\-]+)\.(wikimedia.org|wikipedia.org|wmflabs.org|wikisource.org)\/w\/index.php/,
+        var pattern1 = /([a-z0-9.\-]+)\.(nccommons.org|mdwiki.org)\/wiki\/([^?]+)/,
+            pattern2 = /([a-z0-9.\-]+)\.(nccommons.org|mdwiki.org)\/w\/index.php/,
             matches1 = params.title.match(pattern1),
             matches2 = params.title.match(pattern2);
 
@@ -463,7 +463,7 @@ controller('AppCtrl', ['$scope', '$http', '$timeout', '$q', '$window', '$httpPar
             params.title = getParameterByName('title', qs);
             params.page = getParameterByName('page', qs);
         } else {
-            params.site = params.site || 'commons.wikimedia.org';
+            params.site = params.site || 'nccommons.org';
             params.page = getParameterByName('page', qs) || params.page;
         }
 

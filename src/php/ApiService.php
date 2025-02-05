@@ -22,7 +22,7 @@ class ApiService
     protected $factory;
     public $calls = 0;
 
-    public function __construct(FactoryInterface $factory, LoggerInterface $logger, AuthServiceInterface $auth, Config $config, $site = 'commons.wikimedia.org')
+    public function __construct(FactoryInterface $factory, LoggerInterface $logger, AuthServiceInterface $auth, Config $config, $site = 'nccommons.org')
     {
         $this->factory = $factory;
         $this->logger = $logger;

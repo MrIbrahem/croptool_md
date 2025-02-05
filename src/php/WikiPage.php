@@ -35,7 +35,7 @@ class WikiPage
      * @param string $title
      * @param string $namespace
      */
-    public function __construct(FileRepository $files, FactoryInterface $factory, LoggerInterface $logger, $title, $site = 'commons.wikimedia.org', $namespace = 'File:')
+    public function __construct(FileRepository $files, FactoryInterface $factory, LoggerInterface $logger, $title, $site = 'nccommons.org', $namespace = 'File:')
     {
         $this->api = $factory->make(ApiService::class, [
             'site' => $site
