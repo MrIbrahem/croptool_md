@@ -106,7 +106,7 @@ class FileController
 
     public function crop(Response $response, Request $request, WikiPageService $pageService, ImageEditor $editor, LoggerInterface $logger, FactoryInterface $factory)
     {
-        $page = $pageService->getForTitle($request->getQueryParams()['title'] ?? 0, $request->getQueryParams()['site'] ?? 'commons.wikimedia.org');
+        $page = $pageService->getForTitle($request->getQueryParams()['title'] ?? 0, $request->getQueryParams()['site'] ?? 'nccommons.org');
         // @TODO: DRY
         $pageno = intval($request->getQueryParams()['page'] ?? 0);
         $x = intval($request->getQueryParams()['x'] ?? 0);
@@ -190,15 +190,15 @@ class FileController
     public function publish(Response $response, Request $request, WikiPageService $pageService, FactoryInterface $factory, LoggerInterface $logger)
     {
         $sitesSupportingExtractedFromTemplate = [
-            'commons.wikimedia.org',
+            'nccommons.org',
         ];
         $sitesSupportingImageExtractedTemplate = [
-            'commons.wikimedia.org',
+            'nccommons.org',
         ];
 
         // @TODO: DRY
         $body = $request->getParsedBody();
-        $site = array_get($body, 'site', 'commons.wikimedia.org');
+        $site = array_get($body, 'site', 'nccommons.org');
         $page = $pageService->getForTitle(array_get($body, 'title'), $site);
         $pageno = intval(array_get($body, 'page', 0));
         $overwrite = array_get($body, 'overwrite') == 'overwrite';
